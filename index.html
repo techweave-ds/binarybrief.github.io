@@ -1,24 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-LX6Y4ME99Q"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-LX6Y4ME99Q');
-</script>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="description" content="Senior BI Consultant portfolio — Deepanshu Sharma. 6+ years of Qlik Sense, Power BI, SQL, and data analytics expertise across Porsche, AUDI, and Skoda."/>
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='16' fill='%23060912'/%3E%3Ctext x='50' y='68' text-anchor='middle' fill='%2300d4ff' font-size='50' font-weight='bold' font-family='monospace'%3EBI%3C/text%3E%3C/svg%3E"/>
 <title>Deepanshu Sharma — Senior BI Consultant</title>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Outfit:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet"/>
 <style>
 :root{--bg:#060912;--surface:#0d1220;--border:rgba(255,255,255,0.07);--text:#e8eaf0;--muted:#6b7694;--accent:#00d4ff;--accent3:#7c3aed;--green:#00e5a0;--yellow:#ffd166;}
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
-body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;cursor:none;}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;overflow-x:hidden;}
+body.cursor-active{cursor:none;}
 .cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .3s,height .3s;mix-blend-mode:screen;}
 .cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(0,212,255,0.4);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width .3s,height .3s;}
 nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 5vw;border-bottom:1px solid var(--border);background:rgba(6,9,18,0.85);backdrop-filter:blur(20px);}
@@ -37,6 +31,13 @@ nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:cen
 .hire-pulse{position:absolute;top:4px;right:4px;width:5px;height:5px;border-radius:50%;background:#fff;animation:hirePulse 1.8s infinite;}
 @keyframes hirePulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.4;transform:scale(.6);}}
 @keyframes pulse{0%,100%{box-shadow:0 0 6px var(--green);}50%{box-shadow:0 0 18px var(--green);}}
+
+.nav-toggle{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:none;padding:4px;z-index:600;}
+.nav-toggle span{display:block;width:22px;height:2px;background:var(--text);border-radius:1px;transition:transform .3s,opacity .3s;}
+.nav-toggle.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.nav-toggle.open span:nth-child(2){opacity:0;}
+.nav-toggle.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+@media(hover:none)and(pointer:coarse){.nav-toggle{cursor:default;}}
 
 .hero{min-height:100vh;position:relative;display:flex;align-items:center;overflow:hidden;}
 #hero-canvas{position:absolute;inset:0;width:100%;height:100%;}
@@ -267,28 +268,74 @@ footer{padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items
 .reveal-delay-3{transition-delay:.3s;}
 
 @media(max-width:900px){
-  nav{padding:1rem 1.5rem;}
-  .nav-links{display:none;}
-  .hero-content{padding:0 1.5rem;padding-top:88px;}
-  .hero-stats{right:1.5rem;gap:1.5rem;}
+  nav{padding:.8rem 1.5rem;}
+  .nav-toggle{display:flex;}
+  .nav-links{position:fixed;top:0;right:-100%;width:280px;height:100vh;flex-direction:column;background:rgba(6,9,18,.97);backdrop-filter:blur(20px);border-left:1px solid var(--border);padding:5rem 2rem 2rem;gap:1.2rem;transition:right .35s cubic-bezier(.16,1,.3,1);z-index:550;display:flex;}
+  .nav-links.open{right:0;}
+  .nav-links a{font-size:.85rem;letter-spacing:.15em;}
+  .nav-hire{display:none;}
+  .hero-content{padding:0 1.5rem;padding-top:80px;}
+  .hero-stats{position:relative;bottom:auto;right:auto;margin-top:3rem;padding:0 1.5rem;gap:2rem;justify-content:center;flex-wrap:wrap;}
+  .hero-name{font-size:clamp(3rem,12vw,5rem);}
+  .hero-title{font-size:.9rem;max-width:100%;}
+  .hero-eyebrow{margin-bottom:1rem;}
+  .hero-actions{gap:.8rem;flex-direction:column;}
+  .btn-glow,.btn-ghost{justify-content:center;padding:.75rem 1.8rem;font-size:.7rem;}
   .about-grid,.hire-inner{grid-template-columns:1fr;gap:2rem;padding:2rem 1.5rem 3rem;}
-  .sec-heading{padding:.5rem 1.5rem 0;}
+  .about-left p{font-size:.9rem;line-height:1.8;}
+  .info-grid{grid-template-columns:1fr 1fr;}
+  .info-cell{padding:.9rem 1rem;}
+  .info-cell:nth-child(2n){border-right:none;}
+  .info-cell:nth-last-child(-n+2){border-bottom:none;}
+  .sec-heading{padding:.5rem 1.5rem 0;font-size:clamp(2.2rem,8vw,3.5rem);}
   .sec-label{padding:2rem 1.5rem 0;}
   .project-block{grid-template-columns:1fr;min-height:auto;direction:ltr!important;}
-  .project-info{padding:2.5rem 1.5rem;}
-  .project-dash{min-height:300px;}
+  .project-info{padding:2rem 1.5rem;}
+  .project-dash{min-height:260px;padding:1.5rem;}
+  .project-title{font-size:clamp(1.5rem,5vw,2rem);}
+  .project-desc{font-size:.82rem;max-width:100%;}
+  .project-impact{gap:1.5rem;}
   .dash-porsche,.dash-skoda,.dash-audi,.dash-spend{border-left:none!important;border-right:none!important;border-top:1px solid var(--border);}
-  .achieve-grid{grid-template-columns:1fr 1fr;}
-  .achieve-cell{border-right:1px solid var(--border);border-bottom:1px solid var(--border);}
-  .projects-intro{padding:0 1.5rem 2rem;}
-  .all-projects-grid{grid-template-columns:1fr 1fr;padding:0 1.5rem 3rem;}
-  .proj-tabs{padding:0 1.5rem;}
+  .d-p-kpi,.d-a-kpi,.d-s-kpi,.d-sp-kpi{gap:.3rem;}
+  .d-p-k-v{font-size:.85rem;}
+  .d-s-k-v{font-size:.9rem;}
+  .d-a-k-v{font-size:1rem;}
+  .d-sp-k-v{font-size:1.1rem;}
+  .d-p-chart-row,.d-s-row,.d-a-row,.d-sp-row{grid-template-columns:1fr;}
+  .d-p-table{font-size:.45rem;}
+  .d-p-tr{grid-template-columns:1fr .7fr .7fr;}
+  .achieve-grid{grid-template-columns:1fr;}
+  .achieve-cell{padding:2rem 1.5rem;border-right:none;border-bottom:1px solid var(--border);}
+  .achieve-num{font-size:2.8rem;}
+  .projects-intro{padding:0 1.5rem 1.5rem;font-size:.82rem;}
+  .all-projects-grid{grid-template-columns:1fr;padding:0 1.5rem 2.5rem;}
+  .mini-proj{padding:1.5rem 1.2rem;}
+  .proj-tabs{padding:0 1.5rem;overflow-x:auto;}
+  .proj-tab{padding:.7rem 1.2rem;font-size:.58rem;}
+  .ticker-wrap{padding:.8rem 0;}
+  .tick-item{font-size:.6rem;}
+  .hire-inner{padding:3rem 1.5rem;}
+  .hire-left h2{font-size:clamp(2.5rem,10vw,4rem);}
+  .hire-left p{font-size:.85rem;}
+  .hire-card{padding:1.2rem 1.4rem;gap:1rem;}
+  .hire-card-title{font-size:.85rem;}
+  .hire-card-sub{font-size:.55rem;}
+  .hire-icon{width:40px;height:40px;}
   footer{padding:2rem 1.5rem;flex-direction:column;align-items:flex-start;}
+  .footer-name{font-size:1rem;}
 }
 @media(max-width:540px){
+  .hero-stats{gap:1.2rem;}
+  .hero-stat-num{font-size:2.2rem;}
+  .hero-stat-label{font-size:.55rem;}
+  .info-grid{grid-template-columns:1fr;}
+  .info-cell:nth-child(2n){border-right:none;}
+  .info-cell:last-child{border-bottom:none;}
   .all-projects-grid{grid-template-columns:1fr;}
   .achieve-grid{grid-template-columns:1fr;}
-  .achieve-cell{border-right:none;}
+  .achieve-cell:last-child{border-bottom:none;}
+  .nav-links{width:100%;right:-100%;}
+  .nav-links.open{right:0;}
 }
 </style>
 </head>
@@ -304,12 +351,15 @@ footer{padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items
     <span>DS</span>
     <span class="nav-logo-bracket">]</span>
   </a>
-  <ul class="nav-links">
-    <li><a href="#about">About</a></li>
-    <li><a href="#projects">Work</a></li>
-    <li><a href="#hire">Contact</a></li>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#about" onclick="closeNav()">About</a></li>
+    <li><a href="#projects" onclick="closeNav()">Work</a></li>
+    <li><a href="#hire" onclick="closeNav()">Contact</a></li>
   </ul>
   <a href="#hire" class="nav-hire">Let's Work Together<span class="hire-pulse"></span></a>
+  <button class="nav-toggle" id="navToggle" onclick="toggleNav()" aria-label="Toggle navigation menu">
+    <span></span><span></span><span></span>
+  </button>
 </nav>
 
 <section class="hero" id="home">
@@ -591,10 +641,17 @@ footer{padding:2.5rem 5vw;display:flex;justify-content:space-between;align-items
     <div class="footer-name">DEEPANSHU SHARMA</div>
     <div style="font-family:'JetBrains Mono',monospace;font-size:.6rem;color:var(--muted);margin-top:.35rem;letter-spacing:.08em;">Senior BI Consultant · Open to Opportunities Globally</div>
   </div>
-  <div class="footer-copy">© 2025 · All Rights Reserved</div>
+  <div class="footer-copy">© 2026 · All Rights Reserved</div>
 </footer>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LX6Y4ME99Q"></script>
 <script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LX6Y4ME99Q');
+
 function trackResumeDownload() {
   gtag('event', 'resume_download', {
     'event_category': 'engagement',
@@ -604,15 +661,21 @@ function trackResumeDownload() {
 </script>
 
 <script>
-const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-(function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
-document.querySelectorAll('a,button').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='6px';cur.style.height='6px';ring.style.width='50px';ring.style.height='50px';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
-});
+const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
+if(!isTouch){
+  document.body.classList.add('cursor-active');
+  const cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function anim(){rx+=(mx-rx)*.12;ry+=(my-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(anim);})();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cur.style.width='6px';cur.style.height='6px';ring.style.width='50px';ring.style.height='50px';});
+    el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';});
+  });
+}
+let prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(!isTouch && !prefersReducedMotion){
 const canvas=document.getElementById('hero-canvas'),ctx=canvas.getContext('2d');
 let W,H,pts=[];
 function resize(){W=canvas.width=canvas.offsetWidth;H=canvas.height=canvas.offsetHeight;}
@@ -632,6 +695,7 @@ init();
   });
   requestAnimationFrame(draw);
 })();
+}
 
 function switchProj(btn,panelId){
   document.querySelectorAll('.proj-tab').forEach(t=>t.classList.remove('active'));
@@ -650,6 +714,24 @@ revEls.forEach(el=>obs.observe(el));
 
 const skillObs=new IntersectionObserver((entries)=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.querySelectorAll('.skill-fill').forEach(bar=>{setTimeout(()=>{bar.style.width=bar.dataset.w+'%';},200);});skillObs.unobserve(entry.target);}});},{threshold:.3});
 const sb=document.getElementById('skillBars');if(sb)skillObs.observe(sb);
+
+function toggleNav(){
+  const nav=document.getElementById('navLinks');
+  const btn=document.getElementById('navToggle');
+  nav.classList.toggle('open');
+  btn.classList.toggle('open');
+}
+function closeNav(){
+  document.getElementById('navLinks').classList.remove('open');
+  document.getElementById('navToggle').classList.remove('open');
+}
+document.addEventListener('click',function(e){
+  const nav=document.getElementById('navLinks');
+  const toggle=document.getElementById('navToggle');
+  if(nav.classList.contains('open') && !nav.contains(e.target) && !toggle.contains(e.target)){
+    closeNav();
+  }
+});
 
 function openMail(e){
   e.preventDefault();
